@@ -475,10 +475,25 @@ class Rank {
 
         // create background
         if (!!bg) {
-            ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
-        } else {
-            ctx.fillStyle = this.data.background.image;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            const aspectRatio = bg.width / bg.height;
+            const canvasAspectRatio = canvas.width / canvas.height;
+            let sourceX = 0;
+            let sourceY = 0;
+            let sourceWidth = bg.width;
+            let sourceHeight = bg.height;
+            if (aspectRatio > canvasAspectRatio) {
+                // the image is wider than the canvas, crop the sides
+                const scaledWidth = image.height * canvasAspectRatio;
+                sourceX = (image.width - scaledWidth) / 2;
+                sourceWidth = scaledWidth;
+            } else if (aspectRatio < canvasAspectRatio) {
+                // the image is taller than the canvas, crop the top and bottom
+                const scaledHeight = bg.width / canvasAspectRatio;
+                sourceY = (bg.height - scaledHeight) / 2;
+                sourceHeight = scaledHeight;
+            }
+            // ctx.drawImage(bg, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(bg, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, canvas.width, canvas.height);
         }
 
         // add overlay
