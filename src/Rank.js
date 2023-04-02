@@ -532,8 +532,8 @@ class Rank {
       let sourceHeight = bg.height;
       if (aspectRatio > canvasAspectRatio) {
         // the image is wider than the canvas, crop the sides
-        const scaledWidth = image.height * canvasAspectRatio;
-        sourceX = (image.width - scaledWidth) / 2;
+        const scaledWidth = bg.height * canvasAspectRatio;
+        sourceX = (bg.width - scaledWidth) / 2;
         sourceWidth = scaledWidth;
       } else if (aspectRatio < canvasAspectRatio) {
         // the image is taller than the canvas, crop the top and bottom
