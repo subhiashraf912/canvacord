@@ -59,269 +59,274 @@ export = Rank;
  * @property {boolean} [renderEmojis=false] If it should render emojis
  */
 declare class Rank {
-    /**
-     * Rank card data
-     * @type {CanvacordRankData}
-     */
-    data: CanvacordRankData;
-    /**
-     * Loads font
-     * @param {any[]} fontArray Font array
-     * @returns {Rank}
-     */
-    registerFonts(fontArray?: any[]): Rank;
-    /**
-     * If it should render username with emojis (if any)
-     * @param {boolean} [apply=false] Set it to `true` to render emojis.
-     * @returns {Rank}
-     */
-    renderEmojis(apply?: boolean): Rank;
-    /**
-     * Set font size
-     * @param {string} size
-     * @returns {Rank}
-     */
-    setFontSize(size: string): Rank;
-    /**
-     * Set username
-     * @param {string} name Username
-     * @param {string} color Username color
-     * @returns {Rank}
-     */
-    setUsername(name: string, color?: string): Rank;
-    /**
-     * Set discriminator
-     * @param {string|number} discriminator User discriminator
-     * @param {string} color Discriminator color
-     * @returns {Rank}
-     */
-    setDiscriminator(discriminator: string | number, color?: string): Rank;
-    /**
-     * Set progressbar style
-     * @param {string|string[]} color Progressbar Color
-     * @param {"COLOR"|"GRADIENT"} [fillType] Progressbar type
-     * @param {boolean} [rounded=true] If progressbar should have rounded edges
-     * @returns {Rank}
-     */
-    setProgressBar(color: string | string[], fillType?: "COLOR" | "GRADIENT", rounded?: boolean): Rank;
-    /**
-     * Set progressbar track
-     * @param {string} color Track color
-     * @returns {Rank}
-     */
-    setProgressBarTrack(color: string): Rank;
-    /**
-     * Set card overlay
-     * @param {string} color Overlay color
-     * @param {number} [level=0.5] Opacity level
-     * @param {boolean} [display=true] IF it should display overlay
-     * @returns {Rank}
-     */
-    setOverlay(color: string, level?: number, display?: boolean): Rank;
-    /**
-     * Set required xp
-     * @param {number} data Required xp
-     * @param {string} color Color
-     * @returns {Rank}
-     */
-    setRequiredXP(data: number, color?: string): Rank;
-    /**
-     * Set current xp
-     * @param {number} data Current xp
-     * @param {string} color Color
-     * @returns {Rank}
-     */
-    setCurrentXP(data: number, color?: string): Rank;
-    /**
-     * Set Rank
-     * @param {number} data Current Rank
-     * @param {string} text Display text
-     * @param {boolean} [display=true] If it should display rank
-     * @returns {Rank}
-     */
-    setRank(data: number, text?: string, display?: boolean): Rank;
-    /**
-     * Set rank display color
-     * @param {string} text text color
-     * @param {string} number Number color
-     * @returns {Rank}
-     */
-    setRankColor(text?: string, number?: string): Rank;
-    /**
-     * Set level color
-     * @param {string} text text color
-     * @param {string} number number color
-     * @returns {Rank}
-     */
-    setLevelColor(text?: string, number?: string): Rank;
-    /**
-     * Set Level
-     * @param {number} data Current Level
-     * @param {string} text Display text
-     * @param {boolean} [display=true] If it should display level
-     * @returns {Rank}
-     */
-    setLevel(data: number, text?: string, display?: boolean): Rank;
-    /**
-     * Set custom status color
-     * @param {string} color Color to set
-     * @returns {Rank}
-     */
-    setCustomStatusColor(color: string): Rank;
-    /**
-     * Set status
-     * @param {"online"|"idle"|"dnd"|"offline"|"streaming"} status User status
-     * @param {boolean} circle If status icon should be circular.
-     * @param {number|boolean} width Status width
-     * @returns {Rank}
-     */
-    setStatus(status: "online" | "idle" | "dnd" | "offline" | "streaming", circle?: boolean, width?: number | boolean): Rank;
-    /**
-     * Set background image/color
-     * @param {"COLOR"|"IMAGE"} type Background type
-     * @param {string|Buffer} [data] Background color or image
-     * @returns {Rank}
-     */
-    setBackground(type: "COLOR" | "IMAGE", data?: string | Buffer): Rank;
-    /**
-     * User avatar
-     * @param {string|Buffer} data Avatar data
-     * @returns {Rank}
-     */
-    setAvatar(data: string | Buffer): Rank;
-    /**
-     * Builds rank card
-     * @param {object} ops Fonts
-     * @param {string} [ops.fontX="MANROPE_BOLD"] Bold font family
-     * @param {string} [ops.fontY="MANROPE_REGULAR"] Regular font family
-     * @returns {Promise<Buffer>}
-     */
-    build(ops?: {
-        fontX?: string;
-        fontY?: string;
-    }): Promise<Buffer>;
-    /**
-     * Calculates progress
-     * @type {number}
-     * @private
-     * @ignore
-     */
-    private get _calculateProgress();
+  /**
+   * Rank card data
+   * @type {CanvacordRankData}
+   */
+  data: CanvacordRankData;
+  /**
+   * Loads font
+   * @param {any[]} fontArray Font array
+   * @returns {Rank}
+   */
+  registerFonts(fontArray?: any[]): Rank;
+  /**
+   * If it should render username with emojis (if any)
+   * @param {boolean} [apply=false] Set it to `true` to render emojis.
+   * @returns {Rank}
+   */
+  renderEmojis(apply?: boolean): Rank;
+  /**
+   * Set font size
+   * @param {string} size
+   * @returns {Rank}
+   */
+  setFontSize(size: string): Rank;
+  /**
+   * Set username
+   * @param {string} name Username
+   * @param {string} color Username color
+   * @returns {Rank}
+   */
+  setUsername(name: string, color?: string): Rank;
+  /**
+   * Set discriminator
+   * @param {string|number} discriminator User discriminator
+   * @param {string} color Discriminator color
+   * @returns {Rank}
+   */
+  setDiscriminator(discriminator: string | number, color?: string): Rank;
+  /**
+   * Set progressbar style
+   * @param {string|string[]} color Progressbar Color
+   * @param {"COLOR"|"GRADIENT"} [fillType] Progressbar type
+   * @param {boolean} [rounded=true] If progressbar should have rounded edges
+   * @returns {Rank}
+   */
+  setProgressBar(
+    color: string | string[],
+    fillType?: "COLOR" | "GRADIENT",
+    rounded?: boolean
+  ): Rank;
+  /**
+   * Set progressbar track
+   * @param {string} color Track color
+   * @returns {Rank}
+   */
+  setProgressBarTrack(color: string): Rank;
+  /**
+   * Set card overlay
+   * @param {string} color Overlay color
+   * @param {number} [level=0.5] Opacity level
+   * @param {boolean} [display=true] IF it should display overlay
+   * @returns {Rank}
+   */
+  setOverlay(color: string, level?: number, display?: boolean): Rank;
+  /**
+   * Set required xp
+   * @param {number} data Required xp
+   * @param {string} color Color
+   * @returns {Rank}
+   */
+  setRequiredXP(data: number, color?: string): Rank;
+  /**
+   * Set current xp
+   * @param {number} data Current xp
+   * @param {string} color Color
+   * @returns {Rank}
+   */
+  setCurrentXP(data: number, color?: string): Rank;
+  /**
+   * Set Rank
+   * @param {number} data Current Rank
+   * @param {string} text Display text
+   * @param {boolean} [display=true] If it should display rank
+   * @returns {Rank}
+   */
+  setRank(data: number, text?: string, display?: boolean): Rank;
+  /**
+   * Set rank display color
+   * @param {string} text text color
+   * @param {string} number Number color
+   * @returns {Rank}
+   */
+  setRankColor(text?: string, number?: string): Rank;
+  /**
+   * Set level color
+   * @param {string} text text color
+   * @param {string} number number color
+   * @returns {Rank}
+   */
+  setLevelColor(text?: string, number?: string): Rank;
+  /**
+   * Set Level
+   * @param {number} data Current Level
+   * @param {string} text Display text
+   * @param {boolean} [display=true] If it should display level
+   * @returns {Rank}
+   */
+  setLevel(data: number, text?: string, display?: boolean): Rank;
+  /**
+   * Set custom status color
+   * @param {string} color Color to set
+   * @returns {Rank}
+   */
+  setCustomStatusColor(color: string): Rank;
+  /**
+   * Set status
+   * @param {"online" | "idle" | "dnd" | "invisible" | "offline"} status User status
+   * @param {boolean} circle If status icon should be circular.
+   * @param {number|boolean} width Status width
+   * @returns {Rank}
+   */
+  setStatus(
+    status: "online" | "idle" | "dnd" | "invisible" | "offline",
+    circle?: boolean,
+    width?: number | boolean
+  ): Rank;
+  /**
+   * Set background image/color
+   * @param {"COLOR"|"IMAGE"} type Background type
+   * @param {string|Buffer} [data] Background color or image
+   * @returns {Rank}
+   */
+  setBackground(type: "COLOR" | "IMAGE", data?: string | Buffer): Rank;
+  /**
+   * User avatar
+   * @param {string|Buffer} data Avatar data
+   * @returns {Rank}
+   */
+  setAvatar(data: string | Buffer): Rank;
+  /**
+   * Builds rank card
+   * @param {object} ops Fonts
+   * @param {string} [ops.fontX="MANROPE_BOLD"] Bold font family
+   * @param {string} [ops.fontY="MANROPE_REGULAR"] Regular font family
+   * @returns {Promise<Buffer>}
+   */
+  build(ops?: { fontX?: string; fontY?: string }): Promise<Buffer>;
+  /**
+   * Calculates progress
+   * @type {number}
+   * @private
+   * @ignore
+   */
+  private get _calculateProgress();
 }
 declare namespace Rank {
-    export { CanvacordRankData };
+  export { CanvacordRankData };
 }
 type CanvacordRankData = {
-    /**
-     * Rank card width
-     */
-    width: number;
-    /**
-     * Rank card height
-     */
-    height: number;
-    /**
-     * Rank card background data
-     */
-    background: {
-        type?: "image" | "color";
-        image?: string | Buffer;
+  /**
+   * Rank card width
+   */
+  width: number;
+  /**
+   * Rank card height
+   */
+  height: number;
+  /**
+   * Rank card background data
+   */
+  background: {
+    type?: "image" | "color";
+    image?: string | Buffer;
+  };
+  /**
+   * Progressbar data
+   */
+  progressBar: {
+    rounded?: boolean;
+    x?: number;
+    y?: number;
+    height?: number;
+    width?: number;
+    track?: {
+      color?: string;
     };
-    /**
-     * Progressbar data
-     */
-    progressBar: {
-        rounded?: boolean;
-        x?: number;
-        y?: number;
-        height?: number;
-        width?: number;
-        track?: {
-            color?: string;
-        };
-        bar?: {
-            type?: "color" | "gradient";
-            color?: string | string[];
-        };
+    bar?: {
+      type?: "color" | "gradient";
+      color?: string | string[];
     };
-    /**
-     * Progressbar overlay
-     */
-    overlay: {
-        display?: boolean;
-        level?: number;
-        color?: string;
-    };
-    /**
-     * Rank card avatar data
-     */
-    avatar: {
-        source?: string | Buffer;
-        x?: number;
-        y?: number;
-        height?: number;
-        width?: number;
-    };
-    /**
-     * Rank card status
-     */
-    status: {
-        width?: number;
-        type?: "online" | "dnd" | "idle" | "offline" | "streaming";
-        color?: string;
-        circle?: boolean;
-    };
-    /**
-     * Rank card rank data
-     */
-    rank: {
-        display?: boolean;
-        data?: number;
-        textColor?: string;
-        color?: string;
-        displayText?: string;
-    };
-    /**
-     * Rank card level data
-     */
-    level: {
-        display?: boolean;
-        data?: number;
-        textColor?: string;
-        color?: string;
-        displayText?: string;
-    };
-    /**
-     * Rank card current xp
-     */
-    currentXP: {
-        data?: number;
-        color?: string;
-    };
-    /**
-     * Rank card required xp
-     */
-    requiredXP: {
-        data?: number;
-        color?: string;
-    };
-    /**
-     * Rank card discriminator
-     */
-    discriminator: {
-        discrim?: number | string;
-        color?: string;
-    };
-    /**
-     * Username Data
-     */
-    username: {
-        name?: string;
-        color?: string;
-    };
-    /**
-     * If it should render emojis
-     */
-    renderEmojis?: boolean;
+  };
+  /**
+   * Progressbar overlay
+   */
+  overlay: {
+    display?: boolean;
+    level?: number;
+    color?: string;
+  };
+  /**
+   * Rank card avatar data
+   */
+  avatar: {
+    source?: string | Buffer;
+    x?: number;
+    y?: number;
+    height?: number;
+    width?: number;
+  };
+  /**
+   * Rank card status
+   */
+  status: {
+    width?: number;
+    type?: "online" | "dnd" | "idle" | "offline" | "streaming";
+    color?: string;
+    circle?: boolean;
+  };
+  /**
+   * Rank card rank data
+   */
+  rank: {
+    display?: boolean;
+    data?: number;
+    textColor?: string;
+    color?: string;
+    displayText?: string;
+  };
+  /**
+   * Rank card level data
+   */
+  level: {
+    display?: boolean;
+    data?: number;
+    textColor?: string;
+    color?: string;
+    displayText?: string;
+  };
+  /**
+   * Rank card current xp
+   */
+  currentXP: {
+    data?: number;
+    color?: string;
+  };
+  /**
+   * Rank card required xp
+   */
+  requiredXP: {
+    data?: number;
+    color?: string;
+  };
+  /**
+   * Rank card discriminator
+   */
+  discriminator: {
+    discrim?: number | string;
+    color?: string;
+  };
+  /**
+   * Username Data
+   */
+  username: {
+    name?: string;
+    color?: string;
+  };
+  /**
+   * If it should render emojis
+   */
+  renderEmojis?: boolean;
 };
 //# sourceMappingURL=Rank.d.ts.map
