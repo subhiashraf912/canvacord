@@ -435,6 +435,10 @@ class Rank {
         this.data.status.type = "streaming";
         this.data.status.color = "#593595";
         break;
+      case "invisible":
+        this.data.status.type = "invisible";
+        this.data.status.color = "#747F8E";
+        break;
       default:
         throw new Error(`Invalid status "${status}"`);
     }
