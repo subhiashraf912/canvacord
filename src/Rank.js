@@ -54,7 +54,7 @@ const assets = require("./Assets");
  * @property {number} [requiredXP.data=0] required xp
  * @property {string} [requiredXP.color="#FFFFFF"] Rank card required xp color
  * @property {object} username Rank card username
- * @property {number|string} [username.discrim=null] The username
+ * @property {number|string} [username.text=null] The username
  * @property {string} [username.color="rgba(255, 255, 255, 0.4)"] Rank card username color
  * @property {object} displayName displayName Data
  * @property {string} [displayName.name=null] Rank card displayName
@@ -578,8 +578,8 @@ class Rank {
       : await Util.renderEmoji(ctx, name, 257 + 18.5, 164);
 
     // draw username
-    if (!this.data.username.discrim) throw new Error("Missing username!");
-    const discrim = `${this.data.username.discrim}`;
+    if (!this.data.username.text) throw new Error("Missing username!");
+    const discrim = `${this.data.username.text}`;
     if (discrim) {
       ctx.font = `36px ${ops.fontY}`;
       ctx.fillStyle = this.data.username.color;
