@@ -147,7 +147,7 @@ class Rank {
         color: "#FFFFFF",
       },
       username: {
-        discrim: null,
+        text: null,
         color: "rgba(255, 255, 255, 0.4)",
       },
       displayName: {
@@ -216,7 +216,7 @@ class Rank {
 
   /**
    * Set username
-   * @param {string|number} username User username
+   * @param {string} username User username
    * @param {string} color username color
    * @returns {Rank}
    */

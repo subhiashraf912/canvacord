@@ -51,7 +51,7 @@ export = Rank;
  * @property {number} [requiredXP.data=0] required xp
  * @property {string} [requiredXP.color="#FFFFFF"] Rank card required xp color
  * @property {object} username Rank card username
- * @property {number|string} [username.discrim=null] The username
+ * @property {string} [username.text=null] The username
  * @property {string} [username.color="rgba(255, 255, 255, 0.4)"] Rank card username color
  * @property {object} displayName displayName Data
  * @property {string} [displayName.name=null] Rank card displayName
@@ -91,11 +91,11 @@ declare class Rank {
   setDisplayName(name: string, color?: string): Rank;
   /**
    * Set username
-   * @param {string|number} username User username
+   * @param {string} username User username
    * @param {string} color username color
    * @returns {Rank}
    */
-  setUsername(username: string | number, color?: string): Rank;
+  setUsername(username: string, color?: string): Rank;
   /**
    * Set progressbar style
    * @param {string|string[]} color Progressbar Color
@@ -314,7 +314,7 @@ type CanvacordRankData = {
    * Rank card username
    */
   username: {
-    discrim?: number | string;
+    text?: string;
     color?: string;
   };
   /**
