@@ -53,12 +53,12 @@ const assets = require("./Assets");
  * @property {object} requiredXP Rank card required xp
  * @property {number} [requiredXP.data=0] required xp
  * @property {string} [requiredXP.color="#FFFFFF"] Rank card required xp color
- * @property {object} discriminator Rank card discriminator
- * @property {number|string} [discriminator.discrim=null] The discriminator
- * @property {string} [discriminator.color="rgba(255, 255, 255, 0.4)"] Rank card discriminator color
- * @property {object} username Username Data
- * @property {string} [username.name=null] Rank card username
- * @property {string} [username.color="#FFFFFF"] Rank card username color
+ * @property {object} username Rank card username
+ * @property {number|string} [username.discrim=null] The username
+ * @property {string} [username.color="rgba(255, 255, 255, 0.4)"] Rank card username color
+ * @property {object} displayName displayName Data
+ * @property {string} [displayName.name=null] Rank card displayName
+ * @property {string} [displayName.color="#FFFFFF"] Rank card displayName color
  * @property {boolean} [renderEmojis=false] If it should render emojis
  */
 
@@ -72,8 +72,8 @@ class Rank {
             .setRequiredXP(500)
             .setStatus("dnd")
             .setProgressBar(["#FF0000", "#0000FF"], "GRADIENT")
-            .setUsername("Snowflake")
-            .setDiscriminator("0007");
+            .setDisplayName("Snowflake")
+            .setUsername("Alex");
         
         rank.build()
             .then(data => {
@@ -146,11 +146,11 @@ class Rank {
         data: 0,
         color: "#FFFFFF",
       },
-      discriminator: {
+      username: {
         discrim: null,
         color: "rgba(255, 255, 255, 0.4)",
       },
-      username: {
+      displayName: {
         name: null,
         color: "#FFFFFF",
       },
@@ -178,7 +178,7 @@ class Rank {
   }
 
   /**
-   * If it should render username with emojis (if any)
+   * If it should render displayName with emojis (if any)
    * @param {boolean} [apply=false] Set it to `true` to render emojis.
    * @returns {Rank}
    */
@@ -198,34 +198,35 @@ class Rank {
   }
 
   /**
-   * Set username
-   * @param {string} name Username
-   * @param {string} color Username color
+   * Set displayName
+   * @param {string} name displayName
+   * @param {string} color displayName color
    * @returns {Rank}
    */
-  setUsername(name, color = "#FFFFFF") {
+  setDisplayName(name, color = "#FFFFFF") {
     if (typeof name !== "string")
       throw new Error(
-        `Expected username to be a string, received ${typeof name}!`
+        `Expected displayName to be a string, received ${typeof name}!`
       );
-    this.data.username.name = name;
-    this.data.username.color =
+    this.data.displayName.name = name;
+    this.data.displayName.color =
       color && typeof color === "string" ? color : "#FFFFFF";
     return this;
   }
 
   /**
-   * Set discriminator
-   * @param {string|number} discriminator User discriminator
-   * @param {string} color Discriminator color
+   * Set username
+   * @param {string|number} username User username
+   * @param {string} color username color
    * @returns {Rank}
    */
-  setDiscriminator(discriminator, color = "rgba(255, 255, 255, 0.4)") {
-    this.data.discriminator.discrim =
-      !isNaN(discriminator) && `${discriminator}`.length === 4
-        ? discriminator
-        : null;
-    this.data.discriminator.color =
+  setUsername(username, color = "rgba(255, 255, 255, 0.4)") {
+    if (typeof username !== "string")
+      throw new Error(
+        `Expected username to be a string, received ${typeof username}!`
+      );
+    this.data.username.text = username;
+    this.data.username.color =
       color && typeof color === "string" ? color : "rgba(255, 255, 255, 0.4)";
     return this;
   }
@@ -511,7 +512,7 @@ class Rank {
           .requiredXP.data}!`
       );
     if (!this.data.avatar.source) throw new Error("Avatar source not found!");
-    if (!this.data.username.name) throw new Error("Missing username");
+    if (!this.data.displayName.name) throw new Error("Missing displayName");
 
     let bg = null;
     if (this.data.background.type === "image")
@@ -565,24 +566,23 @@ class Rank {
     // reset transparency
     ctx.globalAlpha = 1;
 
-    // draw username
+    // draw displayName
     ctx.font = `bold 36px ${ops.fontX}`;
-    ctx.fillStyle = this.data.username.color;
+    ctx.fillStyle = this.data.displayName.color;
     ctx.textAlign = "start";
-    const name = Util.shorten(this.data.username.name, 10);
+    const name = Util.shorten(this.data.displayName.name, 10);
 
-    // apply username
+    // apply displayName
     !this.data.renderEmojis
       ? ctx.fillText(`${name}`, 257 + 18.5, 164)
       : await Util.renderEmoji(ctx, name, 257 + 18.5, 164);
 
-    // draw discriminator
-    if (!this.data.discriminator.discrim)
-      throw new Error("Missing discriminator!");
-    const discrim = `${this.data.discriminator.discrim}`;
+    // draw username
+    if (!this.data.username.discrim) throw new Error("Missing username!");
+    const discrim = `${this.data.username.discrim}`;
     if (discrim) {
       ctx.font = `36px ${ops.fontY}`;
-      ctx.fillStyle = this.data.discriminator.color;
+      ctx.fillStyle = this.data.username.color;
       ctx.textAlign = "center";
       ctx.fillText(
         `#${discrim.substr(0, 4)}`,

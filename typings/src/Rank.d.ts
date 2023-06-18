@@ -50,12 +50,12 @@ export = Rank;
  * @property {object} requiredXP Rank card required xp
  * @property {number} [requiredXP.data=0] required xp
  * @property {string} [requiredXP.color="#FFFFFF"] Rank card required xp color
- * @property {object} discriminator Rank card discriminator
- * @property {number|string} [discriminator.discrim=null] The discriminator
- * @property {string} [discriminator.color="rgba(255, 255, 255, 0.4)"] Rank card discriminator color
- * @property {object} username Username Data
- * @property {string} [username.name=null] Rank card username
- * @property {string} [username.color="#FFFFFF"] Rank card username color
+ * @property {object} username Rank card username
+ * @property {number|string} [username.discrim=null] The username
+ * @property {string} [username.color="rgba(255, 255, 255, 0.4)"] Rank card username color
+ * @property {object} displayName displayName Data
+ * @property {string} [displayName.name=null] Rank card displayName
+ * @property {string} [displayName.color="#FFFFFF"] Rank card displayName color
  * @property {boolean} [renderEmojis=false] If it should render emojis
  */
 declare class Rank {
@@ -71,7 +71,7 @@ declare class Rank {
    */
   registerFonts(fontArray?: any[]): Rank;
   /**
-   * If it should render username with emojis (if any)
+   * If it should render displayName with emojis (if any)
    * @param {boolean} [apply=false] Set it to `true` to render emojis.
    * @returns {Rank}
    */
@@ -83,19 +83,19 @@ declare class Rank {
    */
   setFontSize(size: string): Rank;
   /**
-   * Set username
-   * @param {string} name Username
-   * @param {string} color Username color
+   * Set displayName
+   * @param {string} name displayName
+   * @param {string} color displayName color
    * @returns {Rank}
    */
-  setUsername(name: string, color?: string): Rank;
+  setDisplayName(name: string, color?: string): Rank;
   /**
-   * Set discriminator
-   * @param {string|number} discriminator User discriminator
-   * @param {string} color Discriminator color
+   * Set username
+   * @param {string|number} username User username
+   * @param {string} color username color
    * @returns {Rank}
    */
-  setDiscriminator(discriminator: string | number, color?: string): Rank;
+  setUsername(username: string | number, color?: string): Rank;
   /**
    * Set progressbar style
    * @param {string|string[]} color Progressbar Color
@@ -311,16 +311,16 @@ type CanvacordRankData = {
     color?: string;
   };
   /**
-   * Rank card discriminator
+   * Rank card username
    */
-  discriminator: {
+  username: {
     discrim?: number | string;
     color?: string;
   };
   /**
-   * Username Data
+   * displayName Data
    */
-  username: {
+  displayName: {
     name?: string;
     color?: string;
   };
